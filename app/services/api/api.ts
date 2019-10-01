@@ -44,59 +44,31 @@ export class Api {
     })
   }
 
-  /**
-   * Gets a list of users.
-   */
-  async getUsers(): Promise<Types.GetUsersResult> {
-    // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`/users`)
+  async getPhotos(page: number, sol: number): Promise<Types.GetMarsPhotosResult> {
+    const response: ApiResponse<{ photos: Types.RoverPhoto[] }> = await this.apisauce.get('mars-photos/api/v1/rovers/curiosity/photos', {
+      api_key: this.config.apiKey, // eslint-disable-line @typescript-eslint/camelcase
+      page,
+      sol
+    })
 
-    // the typical ways to die when calling an api
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
-      if (problem) return problem
+      if (problem) throw new Error(problem.kind)
     }
 
-    const convertUser = raw => {
-      return {
-        id: raw.id,
-        name: raw.name,
-      }
-    }
+    const convertPhotos = (raw: Types.RoverPhoto): Types.Photo => ({
+      src: raw.img_src,
+      earthDate: raw.earth_date,
+      description: raw.camera.full_name,
+      title: raw.rover.name,
+      id: raw.id,
+    })
 
-    // transform the data into the format we are expecting
     try {
-      const rawUsers = response.data
-      const resultUsers: Types.User[] = rawUsers.map(convertUser)
-      return { kind: "ok", users: resultUsers }
+      const photos: Types.Photo[] = response.data.photos.map(convertPhotos)
+      return { kind: "ok", photos }
     } catch {
-      return { kind: "bad-data" }
-    }
-  }
-
-  /**
-   * Gets a single user by ID
-   */
-
-  async getUser(id: string): Promise<Types.GetUserResult> {
-    // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`/users/${id}`)
-
-    // the typical ways to die when calling an api
-    if (!response.ok) {
-      const problem = getGeneralApiProblem(response)
-      if (problem) return problem
-    }
-
-    // transform the data into the format we are expecting
-    try {
-      const resultUser: Types.User = {
-        id: response.data.id,
-        name: response.data.name,
-      }
-      return { kind: "ok", user: resultUser }
-    } catch {
-      return { kind: "bad-data" }
+      throw new Error("bad-data")
     }
   }
 }

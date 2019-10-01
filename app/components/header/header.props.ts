@@ -18,6 +18,12 @@ export interface HeaderProps {
   leftIcon?: IconTypes
 
   /**
+   * Text that should appear instead of left icon
+   */
+  leftTx?: string,
+  leftTxStyle?: TextStyle,
+
+  /**
    * What happens when you press the left icon
    */
   onLeftPress?(): void
@@ -26,6 +32,12 @@ export interface HeaderProps {
    * Icon that should appear on the right
    */
   rightIcon?: IconTypes
+
+  /**
+   * Text that should appear instead of right icon
+   */
+  rightTx?: string,
+  rightTxStyle?: TextStyle,
 
   /**
    * What happens when you press the right icon

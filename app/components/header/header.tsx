@@ -29,7 +29,11 @@ export const Header: React.FunctionComponent<HeaderProps> = props => {
     onLeftPress,
     onRightPress,
     rightIcon,
+    rightTx,
+    rightTxStyle,
     leftIcon,
+    leftTx,
+    leftTxStyle,
     headerText,
     headerTx,
     style,
@@ -39,9 +43,9 @@ export const Header: React.FunctionComponent<HeaderProps> = props => {
 
   return (
     <View style={{ ...ROOT, ...style }}>
-      {leftIcon ? (
-        <Button preset="link" onPress={onLeftPress}>
-          <Icon icon={leftIcon} />
+      {(leftIcon || leftTx) ? (
+        <Button preset="link" onPress={onLeftPress} tx={leftTx} textStyle={leftTxStyle}>
+          {leftIcon ? <Icon icon={leftIcon} /> : null}
         </Button>
       ) : (
         <View style={LEFT} />
@@ -49,9 +53,9 @@ export const Header: React.FunctionComponent<HeaderProps> = props => {
       <View style={TITLE_MIDDLE}>
         <Text style={{ ...TITLE, ...titleStyle }} text={header} />
       </View>
-      {rightIcon ? (
-        <Button preset="link" onPress={onRightPress}>
-          <Icon icon={rightIcon} />
+      {(rightIcon || rightTx) ? (
+        <Button preset="link" onPress={onRightPress} tx={rightTx} textStyle={rightTxStyle}>
+          {rightIcon ? <Icon icon={rightIcon} /> : null}
         </Button>
       ) : (
         <View style={RIGHT} />

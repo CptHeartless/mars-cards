@@ -1,6 +1,6 @@
 # Cards
 
-[![CircleCI](https://circleci.com/gh/infinitered/ignite-bowser.svg?style=svg)](https://circleci.com/gh/infinitered/ignite-bowser)
+![MyMars](./my-mars.gif)
 
 ## The latest and greatest boilerplate for Infinite Red opinions
 

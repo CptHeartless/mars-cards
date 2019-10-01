@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "run:ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint index.js app --fix --ext .js,.ts,.tsx",
     "compile": "tsc --noEmit -p . --pretty",
@@ -32,8 +33,9 @@
     "ramda": "0.26.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
-    "react-native-gesture-handler": "^1.3.0",
+    "react-native-gesture-handler": "^1.4.1",
     "react-native-keychain": "3.1.3",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-localize": "^1.0.0",
     "react-native-splash-screen": "3.1.1",
     "react-navigation": "3.11.1",

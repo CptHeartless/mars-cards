@@ -37,7 +37,7 @@ function ScreenWithScrolling(props: ScreenProps) {
       keyboardVerticalOffset={offsets[props.keyboardOffset || "none"]}
     >
       <StatusBar barStyle={props.statusBar || "light-content"} />
-      <Wrapper style={[preset.outer, backgroundStyle]}>
+      <Wrapper style={[preset.outer, backgroundStyle]} forceInset={{ bottom: "never" }}>
         <ScrollView
           style={[preset.outer, backgroundStyle]}
           contentContainerStyle={[preset.inner, style]}

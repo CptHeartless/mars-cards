@@ -7,4 +7,11 @@ export const palette = {
   lightGrey: "#939AA4",
   lighterGrey: "#CDD4DA",
   angry: "#dd3333",
+  alabaster: '#fafafa',
+  gableGreen: '#102027',
+  burntSienna: "#EB5757",
+  trueBlack: '#000000',
+  geyser: '#CFD8DC',
+  rollingStone: '#727C81',
+  alto: '#dadada',
 }

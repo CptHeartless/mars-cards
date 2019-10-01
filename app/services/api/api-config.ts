@@ -1,4 +1,4 @@
-import { API_URL } from "react-native-dotenv"
+import { API_URL, API_KEY } from "react-native-dotenv"
 
 /**
  * The options used to configure the API.
@@ -13,6 +13,11 @@ export interface ApiConfig {
    * Milliseconds before we timeout the request.
    */
   timeout: number
+
+  /**
+   * NASA API key
+   */
+  apiKey: string
 }
 
 /**
@@ -20,5 +25,6 @@ export interface ApiConfig {
  */
 export const DEFAULT_API_CONFIG: ApiConfig = {
   url: API_URL || "https://jsonplaceholder.typicode.com",
+  apiKey: API_KEY || "DEMO_KEY",
   timeout: 10000,
 }
